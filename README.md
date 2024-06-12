@@ -166,3 +166,9 @@ import "@testing-library/jest-dom";
   }
 }
 ```
+
+# Testing
+
+1. run npm test to run jest test
+
+2.

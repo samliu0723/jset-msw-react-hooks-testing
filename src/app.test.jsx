@@ -47,3 +47,63 @@ test('renders "read the docs" paragraph', () => {
   );
   expect(readTheDocs).toBeInTheDocument();
 });
+
+test("it should update the count to 1 when the button is clicked once", () => {
+  render(<App />);
+  const button = screen.getByRole("button", { name: /count is 0/i });
+  expect(button).toBeInTheDocument();
+
+  fireEvent.click(button);
+  expect(button).toHaveTextContent("count is 1");
+});
+
+test("snapshot test", () => {
+  const { container } = render(<App />);
+  expect(container).toMatchInlineSnapshot(`
+<div>
+  <div>
+    <a
+      href="https://vitejs.dev"
+      target="_blank"
+    >
+      <img
+        alt="Vite logo"
+        class="logo"
+      />
+    </a>
+    <a
+      href="https://react.dev"
+      target="_blank"
+    >
+      <img
+        alt="React logo"
+        class="logo react"
+      />
+    </a>
+  </div>
+  <h1>
+    Vite + React
+  </h1>
+  <div
+    class="card"
+  >
+    <button>
+      count is 
+      0
+    </button>
+    <p>
+      Edit 
+      <code>
+        src/App.jsx
+      </code>
+       and save to test HMR
+    </p>
+  </div>
+  <p
+    class="read-the-docs"
+  >
+    Click on the Vite and React logos to learn more
+  </p>
+</div>
+`);
+});
