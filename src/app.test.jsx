@@ -58,7 +58,7 @@ test("it should update the count to 1 when the button is clicked once", () => {
 });
 
 test("snapshot test", () => {
-  const { container } = render(<App />);
+  const { container } = render(<App text={"hello"} />);
   expect(container).toMatchInlineSnapshot(`
 <div>
   <div>
@@ -84,6 +84,9 @@ test("snapshot test", () => {
   <h1>
     Vite + React
   </h1>
+  <h2>
+    hello
+  </h2>
   <div
     class="card"
   >
@@ -106,4 +109,11 @@ test("snapshot test", () => {
   </p>
 </div>
 `);
+});
+
+test("it should render the text prop", () => {
+  const content = "ok!";
+  render(<App text={content} />);
+  const text = screen.getByText(content);
+  expect(text).toBeInTheDocument();
 });
