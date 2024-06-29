@@ -12,6 +12,7 @@ Currently, two official plugins are available:
 For Jest(Javascript and JSX only), you can use the following setup:
 https://jestjs.io/docs/tutorial-react
 https://zaferayan.medium.com/how-to-setup-jest-and-react-testing-library-in-vite-project-2600f2d04bdd
+https://www.youtube.com/watch?v=1ah2jZ9FeQs&list=PLsKJIR9go2Rne6kzKftZxeQHH9HvR0RdV
 
 1. Change .eslintrc.cjs settings, add following rules:
 
@@ -167,8 +168,28 @@ import "@testing-library/jest-dom";
 }
 ```
 
+9. You dont need to import jest to your test files, for intellesense you can install @types/jest
+
+10. The userEvent is not included in the @testing-library/react, you can install @testing-library/user-event to use it.
+
+11. You can create a jest.config.js file to configure jest, it work the same as package.json jest config.
+
 # Testing
 
 1. run npm test to run jest test
 
-2.
+# Mocking
+
+use the msw for mocking https://mswjs.io/docs/integrations/node
+
+1. install msw: npm install msw@latest --save-dev
+
+2. There are some environment issues with msw2.0:
+   https://mswjs.io/docs/migrations/1.x-to-2.x#remap-fetch-api-globals
+   to soleve it, add the following code in jest.config.js:
+
+```js
+testEnvironmentOptions: {
+    customExportConditions: [""],
+  }
+```
