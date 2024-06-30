@@ -182,14 +182,11 @@ import "@testing-library/jest-dom";
 
 use the msw for mocking https://mswjs.io/docs/integrations/node
 
-1. install msw: npm install msw@latest --save-dev
-
-2. There are some environment issues with msw2.0:
+1. There are some environment issues with msw2.0 combine with jest
    https://mswjs.io/docs/migrations/1.x-to-2.x#remap-fetch-api-globals
    to soleve it, add the following code in jest.config.js:
+   I recommend to use msw 1.x for jest testing
 
-```js
-testEnvironmentOptions: {
-    customExportConditions: [""],
-  }
-```
+2. install msw: npm i msw@1.3.3 --save-dev
+
+3. You can find documentation for msw 1.x here: https://v1.mswjs.io/docs

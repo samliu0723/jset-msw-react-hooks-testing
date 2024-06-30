@@ -1,9 +1,8 @@
 import { useState } from "react";
+import axios from "axios";
 
 function getData() {
-  return fetch("http://my-backend/fake-date").then((response) =>
-    response.json()
-  );
+  return axios.get("http://my-backend/fake-date");
 }
 
 export default function FetchButton() {
@@ -21,8 +20,7 @@ export default function FetchButton() {
               setDate(response.data);
             })
             .catch((error) => {
-              console.log(error);
-              setError(error);
+              setError(error.response.data);
             })
             .finally(() => {
               setIsLoading(false);

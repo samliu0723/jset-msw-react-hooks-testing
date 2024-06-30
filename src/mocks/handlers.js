@@ -1,8 +1,8 @@
-import { http, HttpResponse } from "msw";
+import { rest } from "msw";
 
 const handlers = [
-  http.get("http://my-backend/fake-date", () => {
-    return HttpResponse.json('["2021-01-01", "2021-01-02", "2021-01-03"]');
+  rest.get("http://my-backend/fake-date", (req, res, ctx) => {
+    return res(ctx.json(["1", "2", "3"]));
   }),
 ];
 
