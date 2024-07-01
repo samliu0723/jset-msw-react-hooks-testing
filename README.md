@@ -173,6 +173,28 @@ import "@testing-library/jest-dom";
 10. The userEvent is not included in the @testing-library/react, you can install @testing-library/user-event to use it.
 
 11. You can create a jest.config.js file to configure jest, it work the same as package.json jest config.
+    The file will look like this:
+
+```js
+export default {
+  testEnvironment: "jsdom",
+  moduleNameMapper: {
+    "^.+\\.svg$": "jest-svg-transformer",
+    "^.+\\.(css|less|scss)$": "identity-obj-proxy",
+  },
+  setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
+};
+```
+
+it indecate that jest will use jsdom as test environment, and use jest-svg-transformer to transform svg files, and use identity-obj-proxy to transform css files, and use setupTests.js to setup the test environment.
+
+12. For setupTests.js, you can use the following code to setup the test environment:
+    the whatwg-fetch is used to polyfill fetch api for jest test, because jsdom does not support fetch api. you need to install it first.
+
+```js
+import "whatwg-fetch";
+import "@testing-library/jest-dom";
+```
 
 # Testing
 
