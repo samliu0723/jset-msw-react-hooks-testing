@@ -1,4 +1,4 @@
-# React + Vite
+# React + Vite + Jest + MSW1.x + Jsdom + React Testing Library
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -189,7 +189,7 @@ export default {
 it indecate that jest will use jsdom as test environment, and use jest-svg-transformer to transform svg files, and use identity-obj-proxy to transform css files, and use setupTests.js to setup the test environment.
 
 12. For setupTests.js, you can use the following code to setup the test environment:
-    the whatwg-fetch is used to polyfill fetch api for jest test, because jsdom does not support fetch api. you need to install it first.
+    the whatwg-fetch is used to polyfill fetch api for jest test, because jsdom does not support fetch api. you need to install it first. you may find other polyfill that need to be added in the future.
 
 ```js
 import "whatwg-fetch";
@@ -206,7 +206,7 @@ use the msw for mocking https://mswjs.io/docs/integrations/node
 
 1. There are some environment issues with msw2.0 combine with jest
    https://mswjs.io/docs/migrations/1.x-to-2.x#remap-fetch-api-globals
-   to soleve it, add the following code in jest.config.js:
+   to soleve it, you need tons of polyfill, so
    I recommend to use msw 1.x for jest testing
 
 2. install msw: npm i msw@1.3.3 --save-dev
